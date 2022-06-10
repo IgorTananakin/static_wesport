@@ -1,20 +1,20 @@
 
+
 (function($) {
 	function setChecked(target) {
-        console.log("test");
 		var checked = $(target).find("input[type='checkbox']:checked").length;
 		if (checked) {
 			$(target).find('select option:first').html('Выбрано команд: ' + checked);
 		} else {
-			$(target).find('select option:first').html('Команда в этой лиге');
+			$(target).find('select option:first').html('Выберите команду');
 		}
 	}
  
 	$.fn.checkselect = function() {
 		this.wrapInner('<div class="checkselect-popup"></div>');
 		this.prepend(
-			'<div class="checkselect-control">' +
-				'<select class="form-control"><option></option></select>' +
+			'<div class="checkselect-control" >' +
+				'<select class="form-control " style="height:40px; margin-bottom:10px;" id="select-country" data-live-search="true"><option data-tokens="футбол" ></option></select>' +
 				'<div class="checkselect-over"></div>' +
 			'</div>'
 		);	
@@ -46,3 +46,4 @@
 })(jQuery);	
  
 $('.checkselect').checkselect();
+
