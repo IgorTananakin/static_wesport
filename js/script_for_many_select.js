@@ -14,7 +14,7 @@
 		this.wrapInner('<div class="checkselect-popup"></div>');
 		this.prepend(
 			'<div class="checkselect-control" >' +
-				'<select class="form-control " style="height:40px; margin-bottom:10px;" id="select-country" data-live-search="true"><option data-tokens="футбол" ></option></select>' +
+				'<select class="form-control " style="height:40px; margin-bottom:10px;" id="select-country" data-live-search="true"><optgroup label="Swedish Cars"><option data-tokens="футбол" ></option></optgroup></select>' +
 				'<div class="checkselect-over"></div>' +
 			'</div>'
 		);	

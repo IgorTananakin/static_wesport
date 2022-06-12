@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
  require '/var/www/www-root/data/www/scout/wp-load.php';  //Подключаем wordpress
 global $wpdb;
 //var_dump($wpdb);
-$static = $wpdb->get_results("SELECT wp_terms.name as лига_с_дивизионом,  wp_posts_1.post_title as хозяева,
+$static = $wpdb->get_results("SELECT wp_terms.name as лига_с_дивизионом,wp_posts_1.ID,  wp_posts_1.post_title as хозяева,
 wp_postmeta.meta_value as счёт_хозяев,wp_postmeta_1.meta_value as счёт_гостей, wp_posts_2.post_title as гости,
 wp_joomsport_matches.date as дата,
 wp_joomsport_matches.time as время FROM wp_terms 
@@ -40,7 +40,7 @@ $teams_sql = implode(',', $teams); //преобразования для зап�
 $trans = array("," => "','");//преобразования для запроса
 $teams_sql = strtr($teams_sql, $trans);//преобразования для запроса
 
-$result_sql = $wpdb->get_results("SELECT wp_terms.name as лига_с_дивизионом,  wp_posts_1.post_title as хозяева,
+$result_sql = $wpdb->get_results("SELECT wp_terms.name as лига_с_дивизионом, wp_posts_1.post_title as хозяева,
                                     wp_postmeta.meta_value as счёт_хозяев,wp_postmeta_1.meta_value as счёт_гостей, wp_posts_2.post_title as гости,
                                     wp_joomsport_matches.date as дата,
                                     wp_joomsport_matches.time as время FROM wp_terms 
@@ -55,7 +55,8 @@ $result_sql = $wpdb->get_results("SELECT wp_terms.name as лига_с_дивиз
                                     AND wp_joomsport_matches.date > '" . $start . "' 
                                     AND wp_joomsport_matches.date < '" . $end . "'
                                     AND wp_posts_1.post_title IN ('" . $teams_sql . "')
-                                    GROUP BY wp_posts.post_title", ARRAY_A);
+                                    ", ARRAY_A);
+
 
 // echo "<br><br><br><br><br>";
 //var_dump($result_sql);
